@@ -3,8 +3,7 @@ import java.util.Scanner;
 public class Cube {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        CubeVoid cubeVoid= new CubeVoid();
-
+        CubeVoid cubeVoid = new CubeVoid();
 
         System.out.print("> ");
 
@@ -14,11 +13,13 @@ public class Cube {
 
         String[] wordArr = word.split("");
 
-        if(direction.equalsIgnoreCase("l")){
+        if (direction.equalsIgnoreCase("l")) {
             cubeVoid.directionL(num, wordArr);
         }
-        if(direction.equalsIgnoreCase("r")){
+        if (direction.equalsIgnoreCase("r")) {
             cubeVoid.directionR(num, wordArr);
         }
+            
+        scanner.close();
     }
 }
