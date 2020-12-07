@@ -3,30 +3,22 @@ import java.util.Scanner;
 public class Cube {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        CubeVoid cubeVoid= new CubeVoid();
 
-        StringBuffer sb = new StringBuffer(scanner.next());
+
+        System.out.print("> ");
+
+        String word = scanner.next();
         int num = scanner.nextInt();
         String direction = scanner.next();
 
-        if(sb.toString().equalsIgnoreCase("l")){
-            if(num >0){
+        String[] wordArr = word.split("");
 
-            }
-
-            if(num <0){
-
-            }
+        if(direction.equalsIgnoreCase("l")){
+            cubeVoid.directionL(num, wordArr);
         }
-
-        if(sb.toString().equalsIgnoreCase("r")){
-            if(num >0){
-
-            }
-
-            if(num <0){
-
-            }
+        if(direction.equalsIgnoreCase("r")){
+            cubeVoid.directionR(num, wordArr);
         }
-
     }
 }
