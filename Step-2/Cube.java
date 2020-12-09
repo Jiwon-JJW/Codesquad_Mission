@@ -8,6 +8,7 @@ public class Cube {
         cubeVoid.printCube();
         System.out.print("CUBE >");
         String command = scanner.next();
+        cubeVoid.inputCommand(command);
 
     }
 }
