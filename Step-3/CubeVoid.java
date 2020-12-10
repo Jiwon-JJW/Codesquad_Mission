@@ -57,50 +57,88 @@ public class CubeVoid {
     }
 
     public void inputCommand(String s){
-        if(s.equalsIgnoreCase("u")){
 
-        }
-        if(s.equalsIgnoreCase("u'")){
+        moveUpL(s);
+        moveUpR(s);
 
-        }
-        if(s.equalsIgnoreCase("l")){
+        moveLeftL(s);
+        moveLeftR(s);
 
-        }
-        if(s.equalsIgnoreCase("l'")){
+        moveFrontL(s);
+        moveFrontR(s);
 
-        }
+        moveRightL(s);
+        moveRightR(s);
+
+        moveBackL(s);
+        moveBackR(s);
+
+        moveDownL(s);
+        moveDownR(s);
+
+        exit(s);
+    }
+
+    public void moveFrontL(String s){
         if(s.equalsIgnoreCase("f")){
-
         }
+    }
+    public void moveFrontR(String s){
         if(s.equalsIgnoreCase("f'")){
-
-        }
-        if(s.equalsIgnoreCase("r")){
-
-        }
-        if(s.equalsIgnoreCase("r'")){
-
-        }
-        if(s.equalsIgnoreCase("b")){
-
-        }
-        if(s.equalsIgnoreCase("b'")){
-
-        }
-        if(s.equalsIgnoreCase("d")){
-
-        }
-        if(s.equalsIgnoreCase("d'")){
-
-        }
-        if(s.equalsIgnoreCase("q")){
-
         }
     }
 
-    public void moveFront(){
-        String[] temp = {};
+    public void moveUpL(String s){
+        if(s.equalsIgnoreCase("u")){
+        }
+    }
+    public void moveUpR(String s){
+        if(s.equalsIgnoreCase("u'")){
+        }
+    }
 
+    public void moveLeftL(String s){
+        if(s.equalsIgnoreCase("l")){
+        }
+    }
+    public void moveLeftR(String s){
+        if(s.equalsIgnoreCase("l'")){
+        }
+    }
+
+    public void moveRightL(String s){
+        if(s.equalsIgnoreCase("r")){
+        }
+    }
+    public void moveRightR(String s){
+        if(s.equalsIgnoreCase("r'")){
+        }
+    }
+
+    public void moveBackL(String s){
+        if(s.equalsIgnoreCase("b")){
+        }
+    }
+    public void moveBackR(String s){
+        if(s.equalsIgnoreCase("b'")){
+        }
+    }
+
+    public void moveDownL(String s){
+        if(s.equalsIgnoreCase("d")){
+        }
+    }
+    public void moveDownR(String s){
+        if(s.equalsIgnoreCase("d'")){
+        }
+    }
+
+    public void exit(String s){
+        if(s.equalsIgnoreCase("q")){
+            System.out.println("Bye~");
+            System.exit(0);
+            return;
+        }
     }
 
 }
