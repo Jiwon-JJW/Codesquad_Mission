@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CubeVoid {
+    CubePrint cubePrint = new CubePrint();
 
     public void main(){
         Scanner scanner = new Scanner(System.in);
@@ -53,6 +54,7 @@ public class CubeVoid {
         for(int i = 0; i<arr.size();i++){
             System.out.println(arr.get(i));
             inputCommand(arr.get(i));
+            cubePrint.printCube();
         }
     }
 
@@ -81,55 +83,151 @@ public class CubeVoid {
 
     public void moveFrontL(String s){
         if(s.equalsIgnoreCase("f")){
+            String[] temp = {cubePrint.arr[0][2][0],cubePrint.arr[0][2][1],cubePrint.arr[0][2][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[0][2][i] = cubePrint.arr[1][2][i];
+                cubePrint.arr[1][i][2] = cubePrint.arr[5][0][i];
+                cubePrint.arr[5][0][i] = cubePrint.arr[3][i][0];
+                cubePrint.arr[3][i][0] = temp[i];
+            }
         }
     }
     public void moveFrontR(String s){
         if(s.equalsIgnoreCase("f'")){
+            String[] temp = {cubePrint.arr[5][0][0],cubePrint.arr[5][0][1],cubePrint.arr[5][0][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[5][0][i] = cubePrint.arr[1][i][2];
+                cubePrint.arr[1][i][2] = cubePrint.arr[0][2][i];
+                cubePrint.arr[0][2][i] = cubePrint.arr[3][i][0];
+                cubePrint.arr[3][i][0] = temp[i];
+            }
         }
     }
 
     public void moveUpL(String s){
         if(s.equalsIgnoreCase("u")){
+            String[] temp = {cubePrint.arr[2][0][0],cubePrint.arr[2][0][1],cubePrint.arr[2][0][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[2][0][i] = cubePrint.arr[3][0][i];
+                cubePrint.arr[3][0][i] = cubePrint.arr[4][0][i];
+                cubePrint.arr[4][0][i] = cubePrint.arr[1][0][i];
+                cubePrint.arr[1][0][i] = temp[i];
+            }
         }
     }
     public void moveUpR(String s){
         if(s.equalsIgnoreCase("u'")){
+            String[] temp = {cubePrint.arr[2][0][0],cubePrint.arr[2][0][1],cubePrint.arr[2][0][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[2][0][i] = cubePrint.arr[1][0][i];
+                cubePrint.arr[1][0][i] = cubePrint.arr[4][0][i];
+                cubePrint.arr[4][0][i] = cubePrint.arr[3][0][i];
+                cubePrint.arr[3][0][i] = temp[i];
+            }
         }
     }
 
     public void moveLeftL(String s){
         if(s.equalsIgnoreCase("l")){
+            String[] temp = {cubePrint.arr[2][0][0],cubePrint.arr[2][1][0],cubePrint.arr[2][2][0]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[2][i][0] = cubePrint.arr[0][i][0];
+                cubePrint.arr[0][i][0] = cubePrint.arr[4][i][2];
+                cubePrint.arr[4][i][2] = cubePrint.arr[5][i][0];
+                cubePrint.arr[5][i][0] = temp[i];
+            }
         }
     }
     public void moveLeftR(String s){
         if(s.equalsIgnoreCase("l'")){
+            String[] temp = {cubePrint.arr[2][0][0],cubePrint.arr[2][1][0],cubePrint.arr[2][2][0]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[2][i][0] = cubePrint.arr[5][i][0];
+                cubePrint.arr[5][i][0] = cubePrint.arr[4][i][2];
+                cubePrint.arr[4][i][2] = cubePrint.arr[0][i][0];
+                cubePrint.arr[0][i][0] = temp[i];
+            }
         }
     }
 
     public void moveRightL(String s){
         if(s.equalsIgnoreCase("r")){
+            String[] temp = {cubePrint.arr[2][0][2],cubePrint.arr[2][1][2],cubePrint.arr[2][2][2]};
+
+            for(int i = 0; i< 3; i++) {
+                cubePrint.arr[2][i][2] = cubePrint.arr[5][i][2];
+                cubePrint.arr[5][i][2] = cubePrint.arr[4][i][0];
+                cubePrint.arr[4][i][0] = cubePrint.arr[0][i][2];
+                cubePrint.arr[0][i][2] = temp[i];
+            }
         }
     }
     public void moveRightR(String s){
         if(s.equalsIgnoreCase("r'")){
+            String[] temp = {cubePrint.arr[2][0][2],cubePrint.arr[2][1][2],cubePrint.arr[2][2][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[2][i][2] = cubePrint.arr[0][i][2];
+                cubePrint.arr[0][i][2] = cubePrint.arr[4][i][0];
+                cubePrint.arr[4][i][0] = cubePrint.arr[5][i][2];
+                cubePrint.arr[5][i][2] = temp[i];
+            }
         }
     }
 
     public void moveBackL(String s){
         if(s.equalsIgnoreCase("b")){
+            String[] temp = {cubePrint.arr[3][0][2],cubePrint.arr[3][1][2],cubePrint.arr[3][2][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[3][i][2] = cubePrint.arr[5][2][i];
+                cubePrint.arr[5][2][i] = cubePrint.arr[1][i][0];
+                cubePrint.arr[1][i][0] = cubePrint.arr[0][0][i];
+                cubePrint.arr[0][0][i] = temp[i];
+            }
         }
     }
     public void moveBackR(String s){
         if(s.equalsIgnoreCase("b'")){
+            String[] temp = {cubePrint.arr[3][0][2],cubePrint.arr[3][1][2],cubePrint.arr[3][2][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[3][i][2] = cubePrint.arr[0][0][i];
+                cubePrint.arr[0][0][i] = cubePrint.arr[1][i][0];
+                cubePrint.arr[1][i][0] = cubePrint.arr[5][2][i];
+                cubePrint.arr[5][2][i] = temp[i];
+            }
         }
     }
 
     public void moveDownL(String s){
         if(s.equalsIgnoreCase("d")){
+            String[] temp = {cubePrint.arr[2][2][0],cubePrint.arr[2][2][1],cubePrint.arr[2][2][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[2][2][i] = cubePrint.arr[1][2][i];
+                cubePrint.arr[1][2][i] = cubePrint.arr[4][2][i];
+                cubePrint.arr[4][2][i] = cubePrint.arr[3][2][i];
+                cubePrint.arr[3][2][i] = temp[i];
+            }
         }
     }
     public void moveDownR(String s){
         if(s.equalsIgnoreCase("d'")){
+            String[] temp = {cubePrint.arr[2][2][0],cubePrint.arr[2][2][1],cubePrint.arr[2][2][2]};
+
+            for(int i = 0; i< 3; i++){
+                cubePrint.arr[2][2][i] = cubePrint.arr[3][2][i];
+                cubePrint.arr[3][2][i] = cubePrint.arr[4][2][i];
+                cubePrint.arr[4][2][i] = cubePrint.arr[1][2][i];
+                cubePrint.arr[1][2][i] = temp[i];
+            }
         }
     }
 
