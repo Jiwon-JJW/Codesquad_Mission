@@ -1,18 +1,18 @@
 public class CubePrint {
-    String[][][] arr = {
-            {{"B", "B", "B"}, {"B", "B", "B"}, {"B", "B", "B"}},
-            {{"W", "W", "W"}, {"W", "W", "W"}, {"W", "W", "W"}},
-            {{"O", "O", "O"}, {"O", "O", "O"}, {"O", "O", "O"}},
-            {{"G", "G", "G"}, {"G", "G", "G"}, {"G", "G", "G"}},
-            {{"Y", "Y", "Y"}, {"Y", "Y", "Y"}, {"Y", "Y", "Y"}},
-            {{"R", "R", "R"}, {"R", "R", "R"}, {"R", "R", "R"}},
+    char[][][] arr = {
+            {{'B', 'B', 'B'}, {'B', 'B', 'B'}, {'B', 'B', 'B'}},
+            {{'W', 'W', 'W'}, {'W', 'W', 'W'}, {'W', 'W', 'W'}},
+            {{'O', 'O', 'O'}, {'O', 'O', 'O'}, {'O', 'O', 'O'}},
+            {{'G', 'G', 'G'}, {'G', 'G', 'G'}, {'G', 'G', 'G'}},
+            {{'Y', 'Y', 'Y'}, {'Y', 'Y', 'Y'}, {'Y', 'Y', 'Y'}},
+            {{'R', 'R', 'R'}, {'R', 'R', 'R'}, {'R', 'R', 'R'}},
     };
 
     public void print2(){
         for (int j = 0; j < arr[0].length; j++) {
             for (int i = 1; i < arr.length - 1; i++) {
                 for (int k = 0; k < 3; k++) {
-                    System.out.printf("%2s", arr[i][1][k]);
+                    System.out.printf("%2s", arr[i][j][k]);
                 }
                 System.out.printf("%6s", " ");
             }
