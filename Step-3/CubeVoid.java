@@ -6,17 +6,21 @@ import java.util.Scanner;
 public class CubeVoid {
 
     CubeShuffle cubeShuffle = new CubeShuffle();
+    CubePrint cubePrint = new CubePrint();
 
     static int score = 0;
 
     public void main(){
         cubeShuffle.start = System.currentTimeMillis();
         Scanner scanner = new Scanner(System.in);
-        CubePrint cubePrint = new CubePrint();
 
+        System.out.println("=========================================");
+        System.out.println("원본");
         cubePrint.printCube();
-        while(true){
+        System.out.println("=========================================");
+        cubeShuffle.shuffle();
 
+        while(true){
             info();
             String command = scanner.next();
             cmd(command);
@@ -67,6 +71,7 @@ public class CubeVoid {
         for(int i = 0; i<arr.size();i++){
             System.out.println(arr.get(i));
             loopNum(arr, i);
+
             }
         }
 
