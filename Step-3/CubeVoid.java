@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class CubeVoid {
     CubePrint cubePrint = new CubePrint();
 
+    int score = 0;
+
     public void main(){
         Scanner scanner = new Scanner(System.in);
         CubePrint cubePrint = new CubePrint();
@@ -16,7 +18,6 @@ public class CubeVoid {
             String command = scanner.next();
             cmd(command);
         }
-
 
     }
 
@@ -45,6 +46,7 @@ public class CubeVoid {
         arr.addAll(Arrays.asList(split));
 
         for(int i = 0; i<arr.size(); i++){
+            cmdNumber((ArrayList<String>) arr, i);
             if(i+1< arr.size()){
                 if(arr.get(i+1).equalsIgnoreCase("'")){
                     arr.set(i,arr.get(i)+"'");
@@ -52,16 +54,32 @@ public class CubeVoid {
                 }
             }
         }
+        score += arr.size();
 
+        System.out.println(arr);
+
+        printCMD((ArrayList<String>) arr);
+    }
+    public void printCMD(ArrayList<String> arr){
         for(int i = 0; i<arr.size();i++){
             System.out.println(arr.get(i));
             inputCommand(arr.get(i));
             cubePrint.printCube();
         }
     }
+    public void cmdNumber(ArrayList<String> arr,int i){
+        try {
+            if(0 < Integer.parseInt(arr.get(i)) && 9 > Integer.parseInt(arr.get(i))){
+                arr.set(i+1,arr.get(i)+arr.get(i+1));
+                arr.remove(i);
+            }
+        }catch (NumberFormatException e){
+            return;
+        }
+
+    }
 
     public void inputCommand(String s){
-
         moveUpL(s);
         moveUpR(s);
 
@@ -270,6 +288,7 @@ public class CubeVoid {
     public void exit(String s){
         if(s.equalsIgnoreCase("q")){
             System.out.println("Bye~");
+            System.out.println("조작 갯수: "+(score-1));
             System.exit(0);
             return;
         }
