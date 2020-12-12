@@ -4,6 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CubeVoid {
+    char[][][] answerCube = {
+            {{'B', 'B', 'B'}, {'B', 'B', 'B'}, {'B', 'B', 'B'}},
+            {{'W', 'W', 'W'}, {'W', 'W', 'W'}, {'W', 'W', 'W'}},
+            {{'O', 'O', 'O'}, {'O', 'O', 'O'}, {'O', 'O', 'O'}},
+            {{'G', 'G', 'G'}, {'G', 'G', 'G'}, {'G', 'G', 'G'}},
+            {{'Y', 'Y', 'Y'}, {'Y', 'Y', 'Y'}, {'Y', 'Y', 'Y'}},
+            {{'R', 'R', 'R'}, {'R', 'R', 'R'}, {'R', 'R', 'R'}},
+    };
 
     CubeShuffle cubeShuffle = new CubeShuffle();
     CubePrint cubePrint = new CubePrint();
@@ -19,12 +27,21 @@ public class CubeVoid {
         cubePrint.printCube();
         System.out.println("=========================================");
         cubeShuffle.shuffle();
+        cubePrint.printCube();
 
-        while(true){
+        while(answer()){
+            answer();
             info();
             String command = scanner.next();
-            cmd(command);
+            try {
+                cmd(command);
+            }catch (Exception e){
+                System.out.println("잘못 입력하셨습니다. 다시 입력해주세요");
+            }
         }
+        System.out.println("큐브를 풀었습니다 ! 축하합니다!");
+        scanner.close();
+        cubeShuffle.exit("q");
 
     }
 
@@ -49,33 +66,31 @@ public class CubeVoid {
 
     public void cmd(String command){
         String[] split = command.split("");
-        List<String> arr = new ArrayList<String>();
-        arr.addAll(Arrays.asList(split));
+        List<String> keyword = new ArrayList<String>();
+        keyword.addAll(Arrays.asList(split));
 
-        for(int i = 0; i<arr.size(); i++){
-            cmdNumber((ArrayList<String>) arr, i);
-            if(i+1< arr.size()){
-                if(arr.get(i+1).equalsIgnoreCase("'")){
-                    arr.set(i,arr.get(i)+"'");
-                    arr.remove(i+1);
+        for(int i = 0; i<keyword.size(); i++){
+            saveLoopNumber((ArrayList<String>) keyword, i);
+            if(i+1< keyword.size()){
+                if(keyword.get(i+1).equalsIgnoreCase("'")){
+                    keyword.set(i,keyword.get(i)+"'");
+                    keyword.remove(i+1);
                 }
             }
         }
-        score += arr.size();
-
-        System.out.println(arr);
-
-        printCMD((ArrayList<String>) arr);
+        score += keyword.size();
+        printCMD((ArrayList<String>) keyword);
     }
+
     public void printCMD(ArrayList<String> arr){
         for(int i = 0; i<arr.size();i++){
             System.out.println(arr.get(i));
             loopNum(arr, i);
-
+            cubePrint.printCube();
             }
         }
 
-    public void cmdNumber(ArrayList<String> arr,int i){
+    public void saveLoopNumber(ArrayList<String> arr,int i){
         try {
             if(0 < Integer.parseInt(arr.get(i)) && 9 > Integer.parseInt(arr.get(i))){
                 arr.set(i+1,arr.get(i)+arr.get(i+1));
@@ -106,5 +121,23 @@ public class CubeVoid {
         }
     }
 
-
+    public boolean answer(){
+        boolean b = false;
+        for(int k = 0; k < answerCube.length; k++) {
+            for (int i = 0; i < answerCube[0].length; i++) {
+                for (int j = 0; j < answerCube[0][0].length; j++) {
+                    String a = String.valueOf(answerCube[k][i][j]);
+                    String c = String.valueOf(CubeShuffle.cube[k][i][j]);
+                    b = a.equalsIgnoreCase(c);
+                    if(b == false){
+                        return true;
+                    }
+                }
+            }
+        }
+        if (b == true){
+            return false;
+        }
+        return true;
+    }
 }
