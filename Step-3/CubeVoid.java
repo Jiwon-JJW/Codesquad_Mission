@@ -10,11 +10,13 @@ public class CubeVoid {
     static int score = 0;
 
     public void main(){
+        cubeShuffle.start = System.currentTimeMillis();
         Scanner scanner = new Scanner(System.in);
         CubePrint cubePrint = new CubePrint();
 
         cubePrint.printCube();
         while(true){
+
             info();
             String command = scanner.next();
             cmd(command);

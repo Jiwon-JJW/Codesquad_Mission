@@ -1,6 +1,9 @@
 public class CubeShuffle {
     CubePrint cubePrint = new CubePrint();
 
+    long start;
+    long end;
+
     public void inputCommand(String s,int i){
         moveUpL(s,i);
         moveUpR(s,i);
@@ -268,8 +271,13 @@ public class CubeShuffle {
 
     public void exit(String s){
         if(s.equalsIgnoreCase("q")){
+            end = System.currentTimeMillis();
+
+            System.out.println("=========================================");
             System.out.println("Bye~");
+            System.out.printf("경과시간 : %02d : %02d \n",(end-start)/60000 , ((end-start)/1000)%60);
             System.out.println("조작 갯수: "+(CubeVoid.score-1));
+            System.out.println("=========================================");
             System.exit(0);
             return;
         }
